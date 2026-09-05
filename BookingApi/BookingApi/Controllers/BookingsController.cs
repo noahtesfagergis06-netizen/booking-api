@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using BookingApi.Data;
 using BookingApi.Models;
 
@@ -46,10 +47,10 @@ namespace BookingApi.Controllers
         }
 
         // POST: api/bookings
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Booking>> CreateBooking(Booking booking)
         {
-            // Look up the service to know how long the appointment takes
             var service = await _context.Services.FindAsync(booking.ServiceId);
             if (service == null)
             {
@@ -58,7 +59,6 @@ namespace BookingApi.Controllers
 
             booking.EndTime = booking.StartTime.AddMinutes(service.DurationMinutes);
 
-            // Check for overlapping bookings for the same stylist
             bool overlaps = await _context.Bookings.AnyAsync(b =>
                 b.StylistId == booking.StylistId &&
                 b.Status != BookingStatus.Cancelled &&
@@ -77,6 +77,7 @@ namespace BookingApi.Controllers
         }
 
         // PUT: api/bookings/5
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateBooking(int id, Booking booking)
         {
@@ -92,6 +93,7 @@ namespace BookingApi.Controllers
         }
 
         // DELETE: api/bookings/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBooking(int id)
         {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using BookingApi.Data;
 using BookingApi.Models;
 
@@ -38,6 +39,7 @@ namespace BookingApi.Controllers
         }
 
         // POST: api/stylists
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Stylist>> CreateStylist(Stylist stylist)
         {
@@ -48,6 +50,7 @@ namespace BookingApi.Controllers
         }
 
         // PUT: api/stylists/5
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateStylist(int id, Stylist stylist)
         {
@@ -63,6 +66,7 @@ namespace BookingApi.Controllers
         }
 
         // DELETE: api/stylists/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteStylist(int id)
         {

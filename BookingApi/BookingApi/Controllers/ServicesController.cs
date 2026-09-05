@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using BookingApi.Data;
 using BookingApi.Models;
 
@@ -38,6 +39,7 @@ namespace BookingApi.Controllers
         }
 
         // POST: api/services
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Service>> CreateService(Service service)
         {
@@ -48,6 +50,7 @@ namespace BookingApi.Controllers
         }
 
         // PUT: api/services/5
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateService(int id, Service service)
         {
@@ -63,6 +66,7 @@ namespace BookingApi.Controllers
         }
 
         // DELETE: api/services/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteService(int id)
         {

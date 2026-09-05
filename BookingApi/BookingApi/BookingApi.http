@@ -1,4 +1,4 @@
-@BookingApi_HostAddress = https://localhost:5252
+@BookingApi_HostAddress = http://localhost:5252
 
 GET {{BookingApi_HostAddress}}/weatherforecast/
 Accept: application/json
@@ -23,6 +23,17 @@ Content-Type: application/json
 {
   "username": "noah",
   "password": "test123"
+}
+
+###
+
+### Try creating a customer WITHOUT logging in (should fail)
+POST {{BookingApi_HostAddress}}/api/customers
+Content-Type: application/json
+
+{
+  "name": "Test Testsson",
+  "email": "test@test.com"
 }
 
 ###
