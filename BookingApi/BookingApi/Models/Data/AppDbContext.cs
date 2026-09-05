@@ -13,5 +13,6 @@ namespace BookingApi.Data
         public DbSet<Stylist> Stylists { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }   
