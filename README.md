@@ -10,6 +10,8 @@ This project grew out of real conversations with small business owners about sch
 - Entity Framework Core
 - SQL Server
 - JWT authentication
+- Swagger / OpenAPI
+- xUnit
 
 ## Features
 
@@ -17,10 +19,12 @@ This project grew out of real conversations with small business owners about sch
 - JWT-based registration and login
 - Automatic double-booking prevention (checks for overlapping appointment times per stylist)
 - Automatic end-time calculation based on service duration
+- Interactive API documentation via Swagger UI
+- Unit tests covering the overlap-detection logic
 
 ## Status
 
-In progress. Core API and authentication are complete. Still to come: full endpoint authorization, API documentation (Swagger), unit tests, and deployment.
+✅ Core API, authentication, documentation, and tests are complete. Next: deployment to a live environment.
 
 ## Running Locally
 
@@ -28,6 +32,3 @@ Clone the repo, then from the `BookingApi/BookingApi` folder:
 
     dotnet restore
     dotnet ef database update
-    dotnet run
-
-Then visit `https://localhost:<port>/openapi/v1.json` to see the API spec (port shown in the console output).
