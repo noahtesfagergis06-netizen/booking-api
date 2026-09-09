@@ -4,6 +4,12 @@ A REST API for managing bookings at small beauty/hair businesses, with authentic
 
 This project grew out of real conversations with small business owners about scheduling problems — see [`database/database-design.md`](./database/database-design.md) for the full background and data model reasoning.
 
+## Live Demo
+
+[Swagger UI](https://noah-booking-api.azurewebsites.net/swagger/index.html)
+
+Hosted on Azure's free tier, so the app may take 10-20 seconds to wake up if it hasn't been visited recently.
+
 ## Tech Stack
 
 - ASP.NET Core Web API (.NET 10)
@@ -12,6 +18,7 @@ This project grew out of real conversations with small business owners about sch
 - JWT authentication
 - Swagger / OpenAPI
 - xUnit
+- Deployed on Azure App Service
 
 ## Features
 
@@ -24,7 +31,7 @@ This project grew out of real conversations with small business owners about sch
 
 ## Status
 
-✅ Core API, authentication, documentation, and tests are complete. Next: deployment to a live environment.
+✅ Complete: core API, authentication, documentation, tests, and live deployment.
 
 ## Running Locally
 
@@ -32,3 +39,12 @@ Clone the repo, then from the `BookingApi/BookingApi` folder:
 
     dotnet restore
     dotnet ef database update
+    dotnet run
+
+Then visit `https://localhost:<port>/swagger` for the interactive API documentation (port shown in the console output).
+
+## Running Tests
+
+From the `BookingApi.Tests` folder:
+
+    dotnet test
